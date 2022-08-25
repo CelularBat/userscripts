@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         TwitterNoLogin
 // @namespace    http://tampermonkey.net/
-// @version      0.1
+// @version      0.2
 // @description  Let you scroll Twitter without logging in.
 // @author       https://github.com/CelularBat
 // @match        *twitter.com/*
