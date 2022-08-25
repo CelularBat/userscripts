@@ -30,9 +30,26 @@
        if ( scroll == 'hidden'){
             jQuery('html').css('overflow','visible');
            console.log('TwitterNoLogin: ScrollBar revived!');
-           clearInterval(IV_scroll);
+           //clearInterval(IV_scroll);
         }
     },2000);
 
+    var st_photoOverlayer = jQuery('<style>.photoOverlayer{background-color: rgba(64, 15, 10, 0.9);transition-duration: 0.5s; transition-property: background-color;'+
+                           'width: 100%; height: 100%; position: fixed; top: 0; left: 0;} </style>');
+    jQuery('html > head').append(st_photoOverlayer);
 
+    var IV_photo = setInterval(function(){
+        var photos = jQuery('img[draggable="true"]').filter(function(){
+            let a = jQuery(this).attr('alt');
+            return a.length > 1;
+        }).not('[done]');
+        photos.attr('done',''); // img already processed - flag
+        photos.closest('[href]').removeAttr('href'); //removing /photo/1 link on image
+        photos.click(function(){
+            var url = jQuery(this).attr('src').replace(/name=.+/,'name=large');
+            var imgResize = ' style="height:'+window.innerHeight+'px;display: block;margin-left: auto;margin-right: auto;" ';
+            var photoOverlayer = jQuery('<div class = "photoOverlayer"><img '+imgResize+'src="'+url+'"></div>').click(function(){jQuery(this).remove()});
+            jQuery('html > body').append(photoOverlayer);
+        })
+    },1000);
 })();
