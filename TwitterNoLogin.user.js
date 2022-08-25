@@ -14,7 +14,7 @@
     'use strict';
      jQuery.noConflict();
 
-
+   // Removes main div with "log in" bar as well as many additional features
    var IV_overlayer = setInterval(function(){
        var layer = jQuery('#layers');
        if ( layer != null){
@@ -24,7 +24,7 @@
        }
     },1000);
 
-
+   // fixes scrollbar if hidden by 'you must log in' message (which doesnt apear after removing main div, but hiddes scrollbar anyway)
    var IV_scroll =  setInterval(function(){
        var scroll = jQuery('html').css('overflow');
        if ( scroll == 'hidden'){
@@ -34,6 +34,7 @@
         }
     },2000);
 
+    // simple image browser, which shows large image on click. Images are also de-linked now !
     var st_photoOverlayer = jQuery('<style>.photoOverlayer{background-color: rgba(64, 15, 10, 0.9);transition-duration: 0.5s; transition-property: background-color;'+
                            'width: 100%; height: 100%; position: fixed; top: 0; left: 0;} </style>');
     jQuery('html > head').append(st_photoOverlayer);
